@@ -21,6 +21,8 @@ Route::get('/players', [PlayerController::class, 'index']);
 Route::get('/players/create', [PlayerController::class, 'create']);
 Route::post('/players', [PlayerController::class, 'store']);
 Route::get('/players/{id}', [PlayerController::class, 'show']);
+Route::get('/players/{id}/edit', [PlayerController::class, 'edit']);
+Route::put('/players/{id}', [PlayerController::class, 'update']);
 
 // Match performance route (add performance to a player)
 Route::post('/players/{id}/performances', [MatchPerformanceController::class, 'store']);

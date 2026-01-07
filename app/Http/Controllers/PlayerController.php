@@ -83,4 +83,34 @@ function create()
         return view('players.show', compact('player', 'stats'));
     }
 
+    public function edit($id)
+    {
+        $player = Player::findOrFail($id);
+
+        // if you need teams/leagues in the edit dropdowns:
+        $leagues = ['Premier League','Serie A','Bundesliga','La Liga','Ligue 1'];
+        $teams = Team::orderBy('name')->get();
+
+        return view('players.edit', compact('player', 'leagues', 'teams'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $player = Player::findOrFail($id);
+
+        $validated = $request->validate([
+            'team_id' => 'required|exists:teams,id',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'position' => 'required|in:GK,DF,MF,FW',
+            'nationality' => 'required|string|max:255',
+            'shirt_number' => 'required|integer|min:0|max:99',
+        ]);
+
+        $player->update($validated);
+
+        return redirect("/players/{$player->id}")->with('success', 'Player updated successfully.');
+    }
+
+
 }

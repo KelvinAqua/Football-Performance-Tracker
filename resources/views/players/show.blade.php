@@ -17,6 +17,9 @@
             <p><strong>Nationality:</strong> {{ $player->nationality }}</p>
             <p><strong>Shirt Number:</strong> {{ $player->shirt_number }}</p>
         </div>
+        
+        <a href="/players/{{ $player->id }}/edit" class="btn btn-warning mb-3">Update</a>
+
 
         <h4 class="text-center mt-4">Match Performances</h4>
 
