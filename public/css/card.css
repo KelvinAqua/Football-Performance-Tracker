@@ -1,0 +1,112 @@
+body {
+  background-color: mintcream;
+}
+
+.player-card {
+  max-width: 30em;
+  flex-direction: row;
+  background-color: #696969;
+  border: 0;
+  box-shadow: 0 7px 7px rgba(0, 0, 0, 0.18);
+  margin: 3em auto;
+}
+.player-card.dark {
+  color: #fff;
+}
+.player-card.bg-light-subtle .card-title {
+  color: dimgrey;
+}
+
+.player-card img {
+  max-width: 25%;
+  margin: auto;
+  padding: 0.5em;
+  border-radius: 0.7em;
+}
+.player-card-body {
+  display: flex;
+  justify-content: space-between;
+}
+.text-section {
+  max-width: 60%;
+}
+.cta-section {
+  max-width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.cta-section .btn {
+  padding: 0.3em 0.5em;
+  /* color: #696969; */
+}
+.player-card.bg-light-subtle .cta-section .btn {
+  background-color: #898989;
+  border-color: #898989;
+}
+@media screen and (max-width: 475px) {
+  .player-card {
+    font-size: 0.9em;
+  }
+}
+/* ---- Team cards on /teams page ---- */
+
+.team-card {
+  max-width: 30em;
+  border: 0;
+  box-shadow: 0 7px 7px rgba(0, 0, 0, 0.18);
+  margin: 1.5em 0;
+  border-radius: 0.75rem;
+}
+
+.team-card-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.team-card .text-section {
+  max-width: 65%;
+}
+
+.team-card .cta-section {
+  max-width: 35%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+/* Button styling to mimic the CodePen “Buy now” button */
+.team-card .btn {
+  border-radius: 999px;
+  padding: 0.35rem 1rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Light grey “View” button */
+.team-card .btn-view {
+  background-color: #f3f3f3;
+  color: #333;
+  border: 1px solid #e0e0e0;
+}
+
+/* Red “Delete” button */
+.team-card .btn-delete {
+  background-color: #ff4d4d;
+  border-color: #ff4d4d;
+  color: #fff;
+}
+
+/* Optional hover states */
+.team-card .btn-view:hover {
+  background-color: #e5e5e5;
+  color: #111;
+}
+
+.team-card .btn-delete:hover {
+  background-color: #e03c3c;
+  border-color: #e03c3c;
+}

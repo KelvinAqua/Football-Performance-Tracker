@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="csrf-token" content="Wo2pY2LyAc7X2lDPerC41HfxKMdN9CQXeaO3ZVFe">
+
+        <title>Registration Snippet - Epic Bootstrap</title>
+
+
+        <meta property="og:site_name" content="Epic Bootstrap" />
+        <meta property="fb:admins" content="1674521632" />
+        <meta property="fb:app_id" content="225496834623404"/>
+
+                <meta name="description" content="Powerful Tools for Enhancing Bootstrap" />
+        <meta property="og:title" content="Epic Bootstrap" />
+        <meta property="og:url" content="https://epicbootstrap.com/snippets/registration" />
+        <meta property="og:image" content="https://epicbootstrap.com/epic-bootstrap-share-image.jpg" />
+        <meta property="og:type" content="website" />
+
+        <meta name="referrer" content="unsafe-url">
+
+        <link rel="apple-touch-icon" sizes="180x180" href="https://epicbootstrap.com/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="https://epicbootstrap.com/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://epicbootstrap.com/favicon-16x16.png">
+        <link rel="manifest" href="https://epicbootstrap.com/manifest.json">
+        <link rel="shortcut icon" href="https://epicbootstrap.com/favicon.ico">
+        <link rel="mask-icon" href="https://epicbootstrap.com/safari-pinned-tab.svg" color="#1da7da">
+        <meta name="apple-mobile-web-app-title" content="Epic Bootstrap">
+        <meta name="application-name" content="Epic Bootstrap">
+        <meta name="theme-color" content="#ffffff">
+
+
+        <meta name="twitter:title" content="Epic Bootstrap - Powerful Tools for Enhancing Bootstrap" />
+        <meta name="twitter:image" content="https://epicbootstrap.com/epic-bootstrap-share-image.jpg">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:description" content="Advanced Bootstrap customizer app that makes building beautiful themes easier then ever!">
+
+        <meta name="google-signin-client_id" content="717947918813-h2mj0vus0vrai8moim8eq7o0bo1cpn1l.apps.googleusercontent.com">
+
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css" />
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"/>
+        <link href="/css/app.css?id=5376930d95ba33728934" rel="stylesheet">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.38.0/lib/codemirror.css">
+
+    </head>
+    <body>  
+
+<div class="main ">
+        <header id="epic-navigation">
+    <div class="container">
+        <div class="nav-left">
+            <h1><a href="/"> Epic Bootstrap</a></h1>
+
+            <ul class="nav-links">
+                <li><a href="/templates">Templates</a></li>
+                <li><a href="/snippets">Snippets</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-right">
+            <a href="https://bootstrapstudio.io" class="btn btn-primary" style="
+    border: 1px solid;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 15px;
+">Bootstrap IDE</a>
+  
+            
+        </div>
+
+        <a href="#" class="nav-responsive-toggle"><ion-icon name="menu"></ion-icon></a>
+    </div>
+</header>        
+        <div class="snippet-show">
+    <div class="container">
+        <div class="snippet-info">
+            <h2 id="snippet-name" data-slug="registration">Registration</h2>
+            <p id="snippet-desc">Registration form including a number of input fields with validation and some icons for signing up using a social media account.</p>
+           
+                        <!-- <button id="snippet-download"><ion-icon name="download"></ion-icon>Download Snippet</button> -->
+            <a href="#" id="snippet-download"><ion-icon name="download"></ion-icon>Download</a>
+                    </div>
+
+        <div class="tabs-wrapper">
+            <ul class="tabs">
+                <li class="active"><a href="#result">Result</a></li>
+                <li><a href="#html-code">HTML</a></li>
+                                <li><a href="#css-code">CSS</a></li>
+                                                <li><a href="#js-code">JS</a></li>
+                            </ul>
+
+            <section class="tabgroup">
+                <div id="result">
+                    <iframe id="snippet-iframe" src=/freebies/snippets/registration/></iframe>
+                </div>
+                <div id="html-code">
+                    <div class="code-present-block">
+                        <button id="copy-html" data-clipboard-target='#html-content' data-clipboard-action="copy">Copy</button>
+                        <textarea id="html-content">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+    &lt;title&gt;The Easiest Way to Add Input Masks to Your Forms&lt;/title&gt;
+    &lt;link href=&quot;https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;assets/css/style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;registration-form&quot;&gt;
+        &lt;form&gt;
+            &lt;div class=&quot;form-icon&quot;&gt;
+                &lt;span&gt;&lt;i class=&quot;icon icon-user&quot;&gt;&lt;/i&gt;&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;input type=&quot;text&quot; class=&quot;form-control item&quot; id=&quot;username&quot; placeholder=&quot;Username&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;input type=&quot;password&quot; class=&quot;form-control item&quot; id=&quot;password&quot; placeholder=&quot;Password&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;input type=&quot;text&quot; class=&quot;form-control item&quot; id=&quot;email&quot; placeholder=&quot;Email&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;input type=&quot;text&quot; class=&quot;form-control item&quot; id=&quot;phone-number&quot; placeholder=&quot;Phone Number&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;input type=&quot;text&quot; class=&quot;form-control item&quot; id=&quot;birth-date&quot; placeholder=&quot;Birth Date&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-block create-account&quot;&gt;Create Account&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/form&gt;
+        &lt;div class=&quot;social-media&quot;&gt;
+            &lt;h5&gt;Sign up with social media&lt;/h5&gt;
+            &lt;div class=&quot;social-icons&quot;&gt;
+                &lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;icon-social-facebook&quot; title=&quot;Facebook&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;icon-social-google&quot; title=&quot;Google&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;&lt;i class=&quot;icon-social-twitter&quot; title=&quot;Twitter&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;https://code.jquery.com/jquery-3.2.1.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;assets/js/script.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</textarea>
+                    </div>
+                </div>
+                                <div id="css-code">
+                    <div class="code-present-block">
+                        <button id="copy-css" data-clipboard-target='#css-content' data-clipboard-action="copy">Copy</button>
+                        <textarea id="css-content">body{
+    background-color: #dee9ff;
+}
+
+.registration-form{
+	padding: 50px 0;
+}
+
+.registration-form form{
+    background-color: #fff;
+    max-width: 600px;
+    margin: auto;
+    padding: 50px 70px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+}
+
+.registration-form .form-icon{
+	text-align: center;
+    background-color: #5891ff;
+    border-radius: 50%;
+    font-size: 40px;
+    color: white;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    margin-bottom: 50px;
+    line-height: 100px;
+}
+
+.registration-form .item{
+	border-radius: 20px;
+    margin-bottom: 25px;
+    padding: 10px 20px;
+}
+
+.registration-form .create-account{
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #5791ff;
+    border: none;
+    color: white;
+    margin-top: 20px;
+}
+
+.registration-form .social-media{
+    max-width: 600px;
+    background-color: #fff;
+    margin: auto;
+    padding: 35px 0;
+    text-align: center;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    color: #9fadca;
+    border-top: 1px solid #dee9ff;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+}
+
+.registration-form .social-icons{
+    margin-top: 30px;
+    margin-bottom: 16px;
+}
+
+.registration-form .social-icons a{
+    font-size: 23px;
+    margin: 0 3px;
+    color: #5691ff;
+    border: 1px solid;
+    border-radius: 50%;
+    width: 45px;
+    display: inline-block;
+    height: 45px;
+    text-align: center;
+    background-color: #fff;
+    line-height: 45px;
+}
+
+.registration-form .social-icons a:hover{
+    text-decoration: none;
+    opacity: 0.6;
+}
+
+@media (max-width: 576px) {
+    .registration-form form{
+        padding: 50px 20px;
+    }
+
+    .registration-form .form-icon{
+        width: 70px;
+        height: 70px;
+        font-size: 30px;
+        line-height: 70px;
+    }
+}</textarea>
+                    </div>
+                </div>
+                                
+                                <div id="js-code">
+                    <div class="code-present-block">
+                        <button id="copy-js" data-clipboard-target='#js-content' data-clipboard-action="copy">Copy</button>
+                        <textarea id="js-content">$(document).ready(function(){
+  $(&#039;#birth-date&#039;).mask(&#039;00/00/0000&#039;);
+  $(&#039;#phone-number&#039;).mask(&#039;0000-0000&#039;);
+ })</textarea>
+                    </div>
+                </div>
+                            </section>
+
+        </div>
+
+    </div>
+</div>
+
+        <footer class="epic-footer">
+    <h3>Powerful Tools for Enhancing Bootstrap</h3>
+
+    <nav>
+        <li><a href="/terms">Terms & Conditions</a></li>
+        <li><a href="/privacy">Privacy Policy</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#6c04052c091c050f0e0303181f181e0d1c420f0301">Contact Us</a></li>
+    </nav>
+
+    <p class="copyright">Copyright © 2019. All Rights Reserved.</p>
+</footer></div>
+        
+<div class="modal-overlay" id="login-modal">
+
+  <div class="modal">    
+    <div class="sign-in-form">
+
+        <h2>Bootstrap Studio Exclusive</h2>
+        <h3 class="message">To get the most out of Epic Bootstrap, sign in using your Google Account.</h3>
+
+        <a class="" href="https://bootstrapstudio.io/" style="background-color: #4566de;color: #fff !important;padding: 10px 16px;border-radius: 20px;">Get Bootstrap Studio</a>
+    </div>
+
+<span class="close">✕</span>
+  </div>
+
+</div>        
+    <!-- Scripts -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="/js/GoogleSignIn.js?id=b78492f1391db5e83e40"></script>
+        <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.38.0/lib/codemirror.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.38.0/mode/css/css.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.38.0/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.38.0/mode/javascript/javascript.js"></script>
+    <script src="https://unpkg.com/ionicons@4.1.2/dist/ionicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <script src="/js/app.js?id=7634310e0f11075d64b8"></script>
+        
+</body>
+</html>
