@@ -21,18 +21,17 @@
                         <div class="cta-section">
                             <a href="{{ route('teams.show', $team) }}"
                                class="btn btn-view mb-2">
-                                View
+                                <i class="bi bi-eye"></i>
                             </a>
 
-                            <form action="{{ route('teams.destroy', $team) }}"
-                                  method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit"
-                                        class="btn btn-delete">
-                                    Delete
-                                </button>
-                            </form>
+                        <form action="/teams/{{ $team->id }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this team?');">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </form>
                         </div>
                     </div>
                 </div>

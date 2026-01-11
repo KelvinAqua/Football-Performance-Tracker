@@ -112,5 +112,11 @@ function create()
         return redirect("/players/{$player->id}")->with('success', 'Player updated successfully.');
     }
 
+    public function destroy($id)
+    {
+        $player = \App\Models\Player::findOrFail($id);
+        $player->delete();
 
+        return redirect('/players')->with('success', 'Player deleted successfully.');
+    }
 }

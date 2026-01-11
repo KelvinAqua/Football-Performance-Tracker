@@ -47,7 +47,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const teamsByLeague = @json($teamsByLeague);
 
-    // Turn the plain <select> into a Choices dropdown
     const teamChoices = new Choices(teamNameSelect, {
         searchPlaceholderValue: 'Search team...',
         shouldSort: false,

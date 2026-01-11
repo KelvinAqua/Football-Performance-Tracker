@@ -32,25 +32,38 @@
 </form>
 
 <table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Player</th>
-            <th>Team</th>
-            <th>Position</th>
-            <th>Nationality</th>
-            <th>Shirt #</th>
-        </tr>
-    </thead>
+<thead>
+    <tr>
+        <th>Player</th>
+        <th>Team</th>
+        <th>Position</th>
+        <th>Nationality</th>
+        <th>Shirt #</th>
+        <th></th>
+    </tr>
+</thead>
     <tbody>
     @foreach ($players as $player)
         <tr>
-            <td><a href="/players/{{ $player->id }}">
-                {{ $player->first_name }} {{ $player->last_name }}
-            </a></td>
+            <td>
+                <a href="/players/{{ $player->id }}">
+                    {{ $player->first_name }} {{ $player->last_name }}
+                </a>
+            </td>
             <td>{{ $player->team->name }}</td>
             <td>{{ $player->position }}</td>
             <td>{{ $player->nationality }}</td>
             <td>{{ $player->shirt_number }}</td>
+            <td>
+                <a href="/players/{{ $player->id }}/edit" class="btn btn-warning btn-sm"><i class="bi bi-pencil"></i></a>
+                <form action="/players/{{ $player->id }}" method="POST" style="display:inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this player?');" title="Delete player">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </form>
+            </td>
         </tr>
     @endforeach
     </tbody>

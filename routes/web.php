@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\MatchPerformanceController;
+use App\Http\Controllers\CountryController;
+
 
 // Home -> show teams list
 Route::get('/', [TeamController::class, 'index'])->name('teams.index');
@@ -23,6 +25,12 @@ Route::post('/players', [PlayerController::class, 'store']);
 Route::get('/players/{id}', [PlayerController::class, 'show']);
 Route::get('/players/{id}/edit', [PlayerController::class, 'edit']);
 Route::put('/players/{id}', [PlayerController::class, 'update']);
+Route::delete('/players/{id}', [PlayerController::class, 'destroy']);
 
-// Match performance route (add performance to a player)
+
+// Match performance routes
 Route::post('/players/{id}/performances', [MatchPerformanceController::class, 'store']);
+
+
+// Country routes
+Route::get('/api/countries', [CountryController::class, 'index']);
