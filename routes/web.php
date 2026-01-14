@@ -29,8 +29,11 @@ Route::delete('/players/{id}', [PlayerController::class, 'destroy']);
 
 
 // Match performance routes
-Route::post('/players/{id}/performances', [MatchPerformanceController::class, 'store']);
-
+Route::post('/players/{player}/performances', [MatchPerformanceController::class, 'store']);
+Route::get('/players/{player}/performances/create', [MatchPerformanceController::class, 'create']);
+Route::get('/players/{player}/performances/{performance}/edit', [MatchPerformanceController::class, 'edit']);
+Route::put('/players/{player}/performances/{performance}', [MatchPerformanceController::class, 'update']);
+Route::delete('/players/{player}/performances/{performance}', [MatchPerformanceController::class, 'destroy']);
 
 // Country routes
 Route::get('/api/countries', [CountryController::class, 'index']);

@@ -2,30 +2,64 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\MatchPerformance;
 use App\Models\Player;
+use App\Models\MatchPerformance;
+use Illuminate\Http\Request;
 
 class MatchPerformanceController extends Controller
 {
-    //Store a new match performance for a player
-    function store(Request $request, $id)
+    public function create(Player $player)
     {
-        $player = Player::findOrFail($id);
+        return view('performances.create', compact('player'));
+    }
 
-        $data = $request->validate([
-            'opponent'       => ['required', 'string', 'max:255'],
-            'match_date'     => ['required', 'date'],
-            'minutes_played' => ['required', 'integer', 'min:0', 'max:130'],
-            'goals'          => ['required', 'integer', 'min:0', 'max:10'],
-            'assists'        => ['required', 'integer', 'min:0', 'max:10'],
-            'rating'         => ['nullable', 'numeric', 'between:0,10'],
+    public function store(Request $request, Player $player)
+    {
+        $validated = $request->validate([
+            'opponent' => 'required|string|max:100',
+            'match_date' => 'required|date',
+            'minutes_played' => 'required|integer|min:0|max:130',
+            'goals' => 'required|integer|min:0|max:20',
+            'assists' => 'required|integer|min:0|max:20',
+            'rating' => 'nullable|numeric|min:0|max:10',
         ]);
 
-        $data['player_id'] = $player->id;
+    $player->matchPerformances()->create($validated);
 
-        MatchPerformance::create($data);
+        return redirect("/players/{$player->id}")->with('success', 'Match performance added!');
+    }
 
-        return back()->with('success', 'Match performance added.');
+    public function edit(Player $player, MatchPerformance $performance)
+    {
+        abort_if($performance->player_id !== $player->id, 404);
+
+        return view('performances.edit', compact('player', 'performance'));
+    }
+
+    public function update(Request $request, Player $player, MatchPerformance $performance)
+    {
+        abort_if($performance->player_id !== $player->id, 404);
+
+        $validated = $request->validate([
+            'opponent' => 'required|string|max:100',
+            'match_date' => 'required|date',
+            'minutes_played' => 'required|integer|min:0|max:130',
+            'goals' => 'required|integer|min:0|max:20',
+            'assists' => 'required|integer|min:0|max:20',
+            'rating' => 'nullable|numeric|min:0|max:10',
+        ]);
+
+        $performance->update($validated);
+
+        return redirect("/players/{$player->id}")->with('success', 'Match performance updated!');
+    }
+
+    public function destroy(Player $player, MatchPerformance $performance)
+    {
+        abort_if($performance->player_id !== $player->id, 404);
+
+        $performance->delete();
+
+        return redirect("/players/{$player->id}")->with('success', 'Match performance deleted!');
     }
 }

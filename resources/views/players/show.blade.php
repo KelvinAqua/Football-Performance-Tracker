@@ -61,81 +61,11 @@
             </table>
         @endif
 
-        {{-- ADD MATCH PERFORMANCE FORM --}}
-        <h4 class="text-center mt-4">Add Match Performance</h4>
+        <br><br>
 
-        <form method="POST" action="/players/{{ $player->id }}/performances">
-            @csrf
+        <a href="/players" class="btn btn-secondary mb-3"><i class="bi bi-arrow-left"></i> Back</a>
 
-            <div class="form-group">
-                <input
-                    type="text"
-                    name="opponent"
-                    class="form-control item"
-                    placeholder="Opponent"
-                    value="{{ old('opponent') }}"
-                >
-            </div>
-
-            <div class="form-group">
-                <input
-                    type="date"
-                    name="match_date"
-                    class="form-control item"
-                    placeholder="Match Date"
-                    value="{{ old('match_date') }}"
-                >
-            </div>
-
-            <div class="form-group">
-                <input
-                    type="number"
-                    name="minutes_played"
-                    class="form-control item"
-                    placeholder="Minutes Played"
-                    value="{{ old('minutes_played') }}"
-                >
-            </div>
-
-            <div class="form-group">
-                <input
-                    type="number"
-                    name="goals"
-                    class="form-control item"
-                    placeholder="Goals"
-                    value="{{ old('goals') }}"
-                >
-            </div>
-
-            <div class="form-group">
-                <input
-                    type="number"
-                    name="assists"
-                    class="form-control item"
-                    placeholder="Assists"
-                    value="{{ old('assists') }}"
-                >
-            </div>
-
-            <div class="form-group">
-                <input
-                    type="number"
-                    step="0.1"
-                    name="rating"
-                    class="form-control item"
-                    placeholder="Rating (0–10)"
-                    value="{{ old('rating') }}"
-                >
-            </div>
-
-            <div class="form-group">
-                <button type="submit" class="btn btn-block create-account">
-                    Add Performance
-                </button>
-            </div>
-
-        </form>
-
+        <a href="/players/{{ $player->id }}/performances/create" class="btn btn-primary mb-3">Add Match Performance </a>
     </div>
 </div>
 
