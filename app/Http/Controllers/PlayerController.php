@@ -8,44 +8,63 @@ use App\Models\Team;
 
 class PlayerController extends Controller
 {
-    //Return the players index view
-    function index(Request $request)
-    {
-        $teams = Team::orderBy('name')->get();
+    public function index(Request $request)
+        {
+            $teams = Team::orderBy('name')->get();
 
-        $players = Player::with('team')
-            ->when($request->team_id, function ($query, $teamId) {
-                $query->where('team_id', $teamId);
-            })
-            ->when($request->position, function ($query, $position) {
-                $query->where('position', $position);
-            })
-            ->orderBy('last_name')
-            ->get();
 
-        return view('players.index', compact('players', 'teams'));
-    }
+            $allowedSorts = ['last_name', 'team', 'position', 'nationality', 'shirt_number'];
+
+            $sort = $request->get('sort', 'last_name');
+            $dir  = $request->get('dir', 'asc');
+
+            if (!in_array($sort, $allowedSorts, true)) {
+                $sort = 'last_name';
+            }
+
+            $dir = strtolower($dir) === 'desc' ? 'desc' : 'asc';
+
+            $players = Player::query()
+                ->with('team')
+                ->when($request->team_id, function ($query, $teamId) {
+                    $query->where('team_id', $teamId);
+                })
+                ->when($request->position, function ($query, $position) {
+                    $query->where('position', $position);
+                })
+                ->when($sort === 'team', function ($query) use ($dir) {
+                    $query->leftJoin('teams', 'players.team_id', '=', 'teams.id')
+                        ->orderBy('teams.name', $dir)
+                        ->select('players.*'); 
+                }, function ($query) use ($sort, $dir) {
+                    $query->orderBy($sort, $dir);
+                })
+                ->get();
+
+            return view('players.index', compact('teams', 'players', 'sort', 'dir'));
+        }
+
 
     //Return the players create view
-function create()
-{
-    // Fixed list of leagues
-    $leagues = [
-        'Premier League',
-        'Serie A',
-        'Bundesliga',
-        'La Liga',
-        'Ligue 1',
-    ];
+    function create()
+    {
+        // Fixed list of leagues
+        $leagues = [
+            'Premier League',
+            'Serie A',
+            'Bundesliga',
+            'La Liga',
+            'Ligue 1',
+        ];
 
-    // Get all teams that belong to those leagues
-    $teams = Team::whereIn('league', $leagues)
-                 ->orderBy('league')
-                 ->orderBy('name')
-                 ->get();
+        // Get all teams that belong to those leagues
+        $teams = Team::whereIn('league', $leagues)
+                    ->orderBy('league')
+                    ->orderBy('name')
+                    ->get();
 
-    return view('players.create', compact('leagues', 'teams'));
-}
+        return view('players.create', compact('leagues', 'teams'));
+    }
 
     //Store a new player in the database
     function store(Request $request)
@@ -65,12 +84,15 @@ function create()
     }
 
 
-    //Return a single player view
-    function show($id)
+    public function show($id, Request $request)
     {
-        $player = Player::with('team', 'matchPerformances')->findOrFail($id);
+        $player = Player::with('team')->findOrFail($id);
 
-        $performances = $player->matchPerformances;
+        $dateDir = strtolower($request->get('date_dir', 'desc')) === 'asc' ? 'asc' : 'desc';
+
+        $performances = $player->matchPerformances()
+            ->orderBy('match_date', $dateDir)
+            ->get();
 
         $stats = [
             'games'      => $performances->count(),
@@ -80,8 +102,9 @@ function create()
             'avg_rating' => round($performances->avg('rating'), 1),
         ];
 
-        return view('players.show', compact('player', 'stats'));
+        return view('players.show', compact('player', 'stats', 'performances', 'dateDir'));
     }
+
 
     public function edit($id)
     {

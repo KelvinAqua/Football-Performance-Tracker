@@ -3,10 +3,10 @@
 @section('content')
 <div class="d-flex justify-content-center">
     @include('performances._form', [
-        'title' => 'Add Match Performance',
+        'title' => 'Edit Match Performance',
         'action' => "/players/{$player->id}/performances",
-        'method' => null,
-        'buttonText' => 'Add Performance',
+        'method' => "PUT",
+        'buttonText' => 'Save Performance',
         'player' => $player,
         'performance' => null
     ])

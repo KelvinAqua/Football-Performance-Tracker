@@ -12,7 +12,7 @@
         <h3 class="text-center mb-4">{{ $player->first_name }} {{ $player->last_name }}</h3>
 
         <div class="mb-4">
-            <p><strong>Team:</strong> {{ $player->team->name }}</p>
+            <p><strong>Team:</strong> {{ optional($player->team)->name ?? '-' }}</p>
             <p><strong>Position:</strong> {{ $player->position }}</p>
             <p><strong>Nationality:</strong> {{ $player->nationality }}</p>
             <p><strong>Shirt Number:</strong> {{ $player->shirt_number }}</p>
@@ -27,8 +27,17 @@
         @else
             <table class="table table-bordered bg-white text-center">
                 <thead>
+                    @php
+                        $nextDir = ($dateDir ?? 'desc') === 'asc' ? 'desc' : 'asc';
+                        $arrow   = ($dateDir ?? 'desc') === 'asc' ? ' ↑' : ' ↓';
+                    @endphp
                     <tr>
-                        <th>Date</th>
+                        <th>
+                            <a href="{{ request()->fullUrlWithQuery(['date_dir' => $nextDir]) }}"
+                            style="text-decoration:none; color:inherit;">
+                                Date{{ $arrow }}
+                            </a>
+                        </th>
                         <th>Opponent</th>
                         <th>Minutes</th>
                         <th>Goals</th>

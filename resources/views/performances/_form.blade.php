@@ -69,11 +69,16 @@
                 >
             </div>
 
-            <div class="form-group">
-                <button type="submit" class="btn btn-block create-account">
-                    Add Performance
-                </button>
-            </div>
+        <div class="form-group d-flex justify-content-between align-items-center">
+            <a href="/players/{{ $player->id }}" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i> Back
+            </a>
+
+            <button type="submit" class="btn btn-primary">
+                {{ $buttonText ?? 'Save Performance' }}
+            </button>
+        </div>
+
 
         </form>
 </div>

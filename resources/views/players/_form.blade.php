@@ -74,10 +74,15 @@
                    value="{{ old('shirt_number', $player->shirt_number ?? '') }}">
         </div>
 
-        <div class="form-group">
-            <button type="submit" class="btn btn-block create-account">
+        <div class="form-group d-flex justify-content-between align-items-center">
+            <a href="/players" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i> Back
+            </a>
+
+            <button type="submit" class="btn btn-primary">
                 {{ $buttonText ?? 'Save Player' }}
             </button>
         </div>
+
     </form>
 </div>

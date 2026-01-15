@@ -7,6 +7,8 @@
 
 <form method="GET" class="row g-2 mb-3">
     <div class="col-md-4">
+        <input type="hidden" name="sort" value="{{ request('sort', 'last_name') }}">
+        <input type="hidden" name="dir" value="{{ request('dir', 'asc') }}">
         <select name="team_id" class="form-select">
             <option value="">All teams</option>
             @foreach ($teams as $team)
@@ -30,18 +32,26 @@
         <button class="btn btn-secondary w-100">Filter</button>
     </div>
 </form>
+@php
+    function sort_link($label, $column, $currentSort, $currentDir) {
+        $dir = ($currentSort === $column && $currentDir === 'asc') ? 'desc' : 'asc';
+        $arrow = $currentSort === $column ? ($currentDir === 'asc' ? ' ↑' : ' ↓') : '';
+        $url = request()->fullUrlWithQuery(['sort' => $column, 'dir' => $dir]);
+        return '<a href="'.$url.'" style="text-decoration:none; color:inherit;">'.$label.$arrow.'</a>';
+    }
+@endphp
 
 <table class="table table-striped">
-<thead>
-    <tr>
-        <th>Player</th>
-        <th>Team</th>
-        <th>Position</th>
-        <th>Nationality</th>
-        <th>Shirt #</th>
-        <th></th>
-    </tr>
-</thead>
+    <thead>
+        <tr>
+            <th>{!! sort_link('Player', 'last_name', $sort, $dir) !!}</th>
+            <th>{!! sort_link('Team', 'team', $sort, $dir) !!}</th>
+            <th>{!! sort_link('Position', 'position', $sort, $dir) !!}</th>
+            <th>{!! sort_link('Nationality', 'nationality', $sort, $dir) !!}</th>
+            <th>{!! sort_link('Shirt #', 'shirt_number', $sort, $dir) !!}</th>
+            <th></th>
+        </tr>
+    </thead>
     <tbody>
     @foreach ($players as $player)
         <tr>
