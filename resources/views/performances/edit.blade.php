@@ -2,13 +2,13 @@
 
 @section('content')
 <div class="d-flex justify-content-center">
-    @include('performances._form', [
-        'title' => 'Edit Match Performance',
-        'action' => "/players/{$player->id}/performances",
-        'method' => "PUT",
-        'buttonText' => 'Save Performance',
-        'player' => $player,
-        'performance' => null
-    ])
+    <div class="registration-form registration-form-wide">
+        <form method="POST" action="/players/{{ $player->id }}/performances/{{ $performance->id }}">
+            @csrf
+            @method('PUT')
+
+            @include('performances._form', ['performance' => $performance])
+        </form>
+    </div>
 </div>
 @endsection

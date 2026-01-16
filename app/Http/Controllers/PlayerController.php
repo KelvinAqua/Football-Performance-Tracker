@@ -88,10 +88,8 @@ class PlayerController extends Controller
     {
         $player = Player::with('team')->findOrFail($id);
 
-        $dateDir = strtolower($request->get('date_dir', 'desc')) === 'asc' ? 'asc' : 'desc';
-
         $performances = $player->matchPerformances()
-            ->orderBy('match_date', $dateDir)
+            ->orderBy('match_date')
             ->get();
 
         $stats = [
@@ -102,9 +100,8 @@ class PlayerController extends Controller
             'avg_rating' => round($performances->avg('rating'), 1),
         ];
 
-        return view('players.show', compact('player', 'stats', 'performances', 'dateDir'));
+        return view('players.show', compact('player', 'stats', 'performances'));
     }
-
 
     public function edit($id)
     {

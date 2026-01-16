@@ -22,52 +22,82 @@
 
         <h4 class="text-center mt-4">Match Performances</h4>
 
-        @if ($player->matchPerformances->isEmpty())
-            <p class="text-center">No performances recorded yet.</p>
-        @else
-            <table class="table table-bordered bg-white text-center">
-                <thead>
-                    @php
-                        $nextDir = ($dateDir ?? 'desc') === 'asc' ? 'desc' : 'asc';
-                        $arrow   = ($dateDir ?? 'desc') === 'asc' ? ' ↑' : ' ↓';
-                    @endphp
-                    <tr>
-                        <th>
-                            <a href="{{ request()->fullUrlWithQuery(['date_dir' => $nextDir]) }}"
-                            style="text-decoration:none; color:inherit;">
-                                Date{{ $arrow }}
-                            </a>
-                        </th>
-                        <th>Opponent</th>
-                        <th>Minutes</th>
-                        <th>Goals</th>
-                        <th>Assists</th>
-                        <th>Rating</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($player->matchPerformances as $perf)
+            @if ($performances->isEmpty())
+                <p class="text-center">No performances recorded yet.</p>
+            @else
+            <div class="table-responsive mt-3">
+            @php
+                $totalGames   = $performances->count();
+                $totalMinutes = $performances->sum('minutes_played');
+                $totalGoals   = $performances->sum('goals');
+                $totalAssists = $performances->sum('assists');
+                $avgRating    = $totalGames ? round($performances->avg('rating'), 1) : 0;
+            @endphp
+
+                <table class="table table-bordered text-center align-middle">
+                    <thead>
                         <tr>
-                            <td>{{ \Carbon\Carbon::parse($perf->match_date)->format('d/m/Y') }}</td>
-                            <td>{{ $perf->opponent }}</td>
-                            <td>{{ $perf->minutes_played }}</td>
-                            <td>{{ $perf->goals }}</td>
-                            <td>{{ $perf->assists }}</td>
-                            <td>{{ $perf->rating }}</td>
+                            <th>Date</th>
+                            <th>Opponent</th>
+                            <th>Minutes</th>
+                            <th>Goals</th>
+                            <th>Assists</th>
+                            <th>Rating</th>
+                            <th></th>
                         </tr>
-                    @endforeach
-                    @if ($stats['games'] > 0)
-                        <tr class="fw-bold">
-                            <td>Totals ({{ $stats['games'] }} games)</td>
-                            <td>-</td>
-                            <td>{{ $stats['minutes'] }}</td>
-                            <td>{{ $stats['goals'] }}</td>
-                            <td>{{ $stats['assists'] }}</td>
-                            <td>{{ $stats['avg_rating'] }}</td>
-                        </tr>
-                    @endif
-                </tbody>
-            </table>
+                    </thead>
+
+                    <tbody>
+                        @forelse($performances as $performance)
+                            <tr>
+                                <td>{{ \Carbon\Carbon::parse($performance->match_date)->format('d/m/Y') }}</td>
+                                <td>{{ $performance->opponent }}</td>
+                                <td>{{ $performance->minutes_played }}</td>
+                                <td>{{ $performance->goals }}</td>
+                                <td>{{ $performance->assists }}</td>
+                                <td>{{ number_format($performance->rating, 1) }}</td>
+                                <td class="text-center align-middle" style="white-space:nowrap;">
+                                    <div class="d-inline-flex gap-2">
+                                        <a href="/players/{{ $player->id }}/performances/{{ $performance->id }}/edit"
+                                        class="btn btn-warning btn-sm d-flex align-items-center justify-content-center"
+                                        style="width:34px;height:34px;"
+                                        title="Edit match performance">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+                                        <form action="/players/{{ $player->id }}/performances/{{ $performance->id }}"
+                                            method="POST"
+                                            style="display:inline; margin:0; padding:0; background:transparent; border:0; box-shadow:none;"
+                                            class="m-0 p-0">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit"
+                                                    class="btn btn-danger btn-sm d-flex align-items-center justify-content-center"
+                                                    style="width:34px;height:34px;"
+                                                    onclick="return confirm('Are you sure you want to delete this match performance?');"
+                                                    title="Delete match performance">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        @empty
+                        @endforelse
+
+                        @if($totalGames > 0)
+                            <tr class="fw-bold">
+                                <td colspan="2">Totals ({{ $totalGames }} games)</td>
+                                <td>{{ $totalMinutes }}</td>
+                                <td>{{ $totalGoals }}</td>
+                                <td>{{ $totalAssists }}</td>
+                                <td>{{ number_format($avgRating, 1) }}</td>
+                                <td></td>
+                            </tr>
+                        @endif
+                    </tbody>
+                </table>
+            </div>
         @endif
 
         <br><br>

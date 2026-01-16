@@ -1,21 +1,16 @@
 <div class="registration-form registration-form-wide">
-    <div class="form-icon">
-        <span><i class="icon icon-user"></i></span>
-    </div>
-
-    <h4 class="text-center mt-4">Add Match Performance</h4>
-
         <form method="POST" action="/players/{{ $player->id }}/performances">
             @csrf
-
+            <div class="form-icon">
+                 <span><i class="icon icon-user"></i></span>
+            </div>
             <div class="form-group">
                 <input
                     type="text"
                     name="opponent"
                     class="form-control item"
                     placeholder="Opponent"
-                    value="{{ old('opponent') }}"
-                >
+                    value="{{ old('opponent', $performance->opponent  ?? '') }}">
             </div>
 
             <div class="form-group">
@@ -24,8 +19,7 @@
                     name="match_date"
                     class="form-control item"
                     placeholder="Match Date"
-                    value="{{ old('match_date') }}"
-                >
+                    value="{{ old('match_date', $performance->match_date ?? '') }}">
             </div>
 
             <div class="form-group">
@@ -34,8 +28,7 @@
                     name="minutes_played"
                     class="form-control item"
                     placeholder="Minutes Played"
-                    value="{{ old('minutes_played') }}"
-                >
+                    value="{{ old('minutes_played', $performance->minutes_played ?? '') }}">
             </div>
 
             <div class="form-group">
@@ -44,8 +37,7 @@
                     name="goals"
                     class="form-control item"
                     placeholder="Goals"
-                    value="{{ old('goals') }}"
-                >
+                    value="{{ old('goals', $performance->goals ?? 0) }}">
             </div>
 
             <div class="form-group">
@@ -54,8 +46,7 @@
                     name="assists"
                     class="form-control item"
                     placeholder="Assists"
-                    value="{{ old('assists') }}"
-                >
+                value="{{ old('assists', $performance->assists ?? 0) }}">
             </div>
 
             <div class="form-group">
@@ -65,8 +56,7 @@
                     name="rating"
                     class="form-control item"
                     placeholder="Rating (0–10)"
-                    value="{{ old('rating') }}"
-                >
+                    value="{{ old('rating', $performance->rating ?? '') }}">
             </div>
 
         <div class="form-group d-flex justify-content-between align-items-center">
